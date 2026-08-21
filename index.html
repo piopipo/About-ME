@@ -980,46 +980,259 @@
 
 
         /* =====================================================
-           MOBILE
-        ===================================================== */
+   MOBILE
+===================================================== */
 
-        @media (max-width: 750px) {
+@media (max-width: 750px) {
 
-            nav {
-                padding: 17px 5%;
-            }
+    /* Navigation */
+    nav {
+        padding: 15px 5%;
+    }
 
-            nav ul {
-                display: none;
-            }
+    nav ul {
+        display: none;
+    }
 
-            section {
-                padding: 80px 5%;
-            }
+    .logo {
+        font-size: 20px;
+    }
 
-            .about,
-            .art-section,
-            .movie-grid {
-                grid-template-columns: 1fr;
-            }
 
-            .gear {
-                display: none;
-            }
+    /* General sections */
+    section {
+        padding: 70px 5%;
+    }
 
-            .hero h1 {
-                font-size: 60px;
-            }
 
-            .section-title h2 {
-                font-size: 36px;
-            }
+    /* Hero */
+    .hero {
+        min-height: 100svh;
+        padding: 100px 20px 60px;
+    }
 
-            .painting {
-                transform: none;
-            }
+    .hero h1 {
+        font-size: clamp(48px, 15vw, 70px);
+        line-height: 1;
+    }
 
-        }
+    .hero p {
+        font-size: 15px;
+        line-height: 1.7;
+        padding: 0 5px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+
+    /* Section titles */
+    .section-title {
+        margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+
+    .section-title p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+
+    /* About */
+    .about {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .about-card {
+        padding: 25px 20px;
+    }
+
+    .about-card p {
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+
+    /* Interest cards */
+    .cards {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .card {
+        padding: 25px 20px;
+    }
+
+    .card h3 {
+        font-size: 21px;
+    }
+
+    .card p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+
+    /* Monet / Art */
+    .art-section {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .painting {
+        width: 100%;
+        transform: none;
+        padding: 10px;
+    }
+
+    .painting img {
+        width: 100%;
+        height: auto;
+    }
+
+    .painting-caption {
+        bottom: 15px;
+        left: 15px;
+        font-size: 10px;
+        padding: 8px 10px;
+    }
+
+    .art-info h2 {
+        font-size: 32px;
+    }
+
+    .art-info p {
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .monet-palette {
+        flex-wrap: wrap;
+    }
+
+
+    /* Favorite artists */
+    .artists-section {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .artist-card {
+        padding: 25px 20px;
+    }
+
+    .artist-card h3 {
+        font-size: 24px;
+    }
+
+    .artist-card p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+
+    /* Music */
+    .music-box {
+        padding: 30px 20px;
+    }
+
+    .music-box h3 {
+        font-size: 24px;
+    }
+
+    .music-box p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .music-tags {
+        gap: 8px;
+    }
+
+    .music-tag {
+        font-size: 11px;
+        padding: 7px 12px;
+    }
+
+
+    /* Movies */
+    .movie-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .movie-card {
+        min-height: 230px;
+        padding: 25px 20px;
+    }
+
+    .movie-card h3 {
+        font-size: 24px;
+    }
+
+    .movie-card p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+
+    /* Photography */
+    .photo-section p {
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+
+    /* Fun facts */
+    .facts {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .fact {
+        padding: 20px 12px;
+    }
+
+    .fact-number {
+        font-size: 28px;
+    }
+
+    .fact p {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+
+    /* Footer */
+    footer {
+        padding: 45px 15px;
+    }
+
+    footer p {
+        font-size: 11px;
+        line-height: 1.6;
+    }
+
+
+    /* Hide decorative gears */
+    .gear {
+        display: none;
+    }
+
+}
 
     </style>
 </head>
