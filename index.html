@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Eugene — A Little World of My Own</title>
+
+    <style>
+
+        /* =====================================================
+           BASIC RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #101a2b;
+            color: #f5ead7;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        /* =====================================================
+           MAGIC BACKGROUND
+        ===================================================== */
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: #4c719b;
+            border-radius: 50%;
+            filter: blur(180px);
+            opacity: 0.25;
+            top: -300px;
+            left: -200px;
+            z-index: -5;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: #b47b43;
+            border-radius: 50%;
+            filter: blur(200px);
+            opacity: 0.15;
+            bottom: -300px;
+            right: -200px;
+            z-index: -5;
+        }
+
+
+        /* =====================================================
+           FLOATING PARTICLES
+        ===================================================== */
+
+        .particle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: #e9c878;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 8s infinite ease-in-out;
+            z-index: -1;
+        }
+
+        .p1 {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .p2 {
+            top: 40%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        .p3 {
+            top: 70%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .p4 {
+            top: 80%;
+            left: 70%;
+            animation-delay: 1s;
+        }
+
+        .p5 {
+            top: 15%;
+            left: 60%;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: translateY(-40px) rotate(180deg);
+                opacity: 0.9;
+            }
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ===================================================== */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: rgba(12, 21, 35, 0.72);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid rgba(231, 197, 120, 0.15);
+
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #e8c778;
+        }
+
+        .logo span {
+            color: #f5ead7;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #d8d0c2;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #e8c778;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 120px 20px 80px;
+
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: entrance 1.3s ease;
+        }
+
+        @keyframes entrance {
+
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        .small-title {
+            display: inline-block;
+
+            padding: 9px 20px;
+
+            border: 1px solid rgba(232, 199, 120, 0.5);
+            border-radius: 30px;
+
+            color: #e8c778;
+
+            background: rgba(232, 199, 120, 0.05);
+
+            margin-bottom: 25px;
+
+            font-size: 14px;
+
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 9vw, 110px);
+            line-height: 0.95;
+            margin-bottom: 25px;
+            font-weight: normal;
+        }
+
+        .hero h1 span {
+            color: #e8c778;
+            font-style: italic;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+
+            color: #bfc4ca;
+
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        .buttons {
+            margin-top: 35px;
+
+            display: flex;
+            justify-content: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 24px;
+
+            border-radius: 8px;
+
+            transition: 0.3s;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 14px;
+        }
+
+        .gold-btn {
+            background: #c59b52;
+            color: #172033;
+            font-weight: bold;
+        }
+
+        .gold-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(197, 155, 82, 0.25);
+        }
+
+        .outline-btn {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #eee;
+        }
+
+        .outline-btn:hover {
+            border-color: #e8c778;
+            color: #e8c778;
+            transform: translateY(-4px);
+        }
+
+
+        /* =====================================================
+           DECORATIVE GEAR
+        ===================================================== */
+
+        .gear {
+            position: absolute;
+
+            color: rgba(232, 199, 120, 0.15);
+
+            font-size: 130px;
+
+            animation: spin 20s linear infinite;
+        }
+
+        .gear1 {
+            top: 25%;
+            left: 4%;
+        }
+
+        .gear2 {
+            bottom: 10%;
+            right: 5%;
+            font-size: 90px;
+            animation-direction: reverse;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        /* =====================================================
+           GENERAL SECTION
+        ===================================================== */
+
+        section {
+            padding: 110px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title small {
+            color: #d5b263;
+            letter-spacing: 2px;
+            font-family: Arial, sans-serif;
+        }
+
+        .section-title h2 {
+            font-size: 45px;
+            font-weight: normal;
+            margin-top: 8px;
+        }
+
+        .section-title p {
+            color: #9099a5;
+            margin-top: 10px;
+        }
+
+
+        /* =====================================================
+           ABOUT
+        ===================================================== */
+
+        .about {
+            max-width: 900px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 40px;
+
+            align-items: center;
+        }
+
+        .about-card {
+            padding: 35px;
+
+            background: rgba(255, 255, 255, 0.035);
+
+            border: 1px solid rgba(232, 199, 120, 0.12);
+
+            border-radius: 15px;
+
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-card p {
+            color: #bfc4ca;
+
+            line-height: 1.9;
+
+            font-size: 17px;
+        }
+
+        .about-card strong {
+            color: #e8c778;
+        }
+
+        .quote {
+            border-left: 3px solid #c59b52;
+            padding-left: 25px;
+
+            color: #d8d0c2;
+
+            font-style: italic;
+
+            line-height: 1.8;
+        }
+
+
+        /* =====================================================
+           INTEREST CARDS
+        ===================================================== */
+
+        .cards {
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(230px, 1fr));
+
+            gap: 20px;
+        }
+
+        .card {
+            padding: 30px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255, 255, 255, 0.055),
+                    rgba(255, 255, 255, 0.015)
+                );
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            border-radius: 16px;
+
+            transition: 0.4s;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 100px;
+            height: 100px;
+
+            background: #d1a85d;
+
+            filter: blur(70px);
+
+            opacity: 0;
+
+            transition: 0.4s;
+        }
+
+        .card:hover::before {
+            opacity: 0.15;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+
+            border-color: rgba(232, 199, 120, 0.35);
+        }
+
+        .card-icon {
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #929ba7;
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           MONET SECTION
+        ===================================================== */
+
+        .art-section {
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 50px;
+
+            align-items: center;
+        }
+
+        .painting {
+            position: relative;
+
+            background: #ddd;
+
+            padding: 12px;
+
+            transform: rotate(-2deg);
+
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .painting img {
+            width: 100%;
+
+            display: block;
+        }
+
+        .painting-caption {
+            position: absolute;
+
+            bottom: 20px;
+            left: 25px;
+
+            background: rgba(15, 20, 30, 0.8);
+
+            padding: 10px 15px;
+
+            color: #eee;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 12px;
+
+            backdrop-filter: blur(10px);
+        }
+
+        .art-info h2 {
+            font-size: 42px;
+
+            font-weight: normal;
+
+            margin-bottom: 20px;
+        }
+
+        .art-info h2 span {
+            color: #e8c778;
+        }
+
+        .art-info p {
+            color: #aab1b9;
+
+            line-height: 1.9;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* =====================================================
+           MUSIC
+        ===================================================== */
+
+        .music-box {
+            max-width: 850px;
+
+            margin: auto;
+
+            padding: 40px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(63, 82, 110, 0.25),
+                    rgba(197, 155, 82, 0.08)
+                );
+
+            border: 1px solid rgba(255, 255, 255, 0.1);
+
+            text-align: center;
+        }
+
+        .music-icon {
+            font-size: 55px;
+
+            margin-bottom: 15px;
+        }
+
+        .music-box h3 {
+            font-size: 28px;
+
+            font-weight: normal;
+
+            margin-bottom: 15px;
+        }
+
+        .music-box p {
+            color: #9da6b0;
+
+            line-height: 1.8;
+
+            max-width: 600px;
+
+            margin: auto;
+        }
+
+        .music-tags {
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            margin-top: 25px;
+        }
+
+        .music-tag {
+            padding: 8px 15px;
+
+            border-radius: 20px;
+
+            border: 1px solid rgba(232, 199, 120, 0.3);
+
+            color: #d7bc78;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           GHIBLI / MOVIE SECTION
+        ===================================================== */
+
+        .movie-grid {
+            max-width: 1050px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 25px;
+        }
+
+        .movie-card {
+            min-height: 260px;
+
+            padding: 35px;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    160deg,
+                    rgba(76, 113, 155, 0.25),
+                    rgba(16, 26, 43, 0.8)
+                );
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: flex-end;
+
+            transition: 0.4s;
+        }
+
+        .movie-card:hover {
+            transform: scale(1.02);
+
+            border-color: rgba(232, 199, 120, 0.3);
+        }
+
+        .movie-card .symbol {
+            font-size: 50px;
+
+            margin-bottom: auto;
+        }
+
+        .movie-card h3 {
+            font-size: 28px;
+
+            font-weight: normal;
+
+            margin-bottom: 10px;
+        }
+
+        .movie-card p {
+            color: #aab1b9;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           PHOTOGRAPHY
+        ===================================================== */
+
+        .photo-section {
+            max-width: 1000px;
+
+            margin: auto;
+
+            text-align: center;
+        }
+
+        .camera {
+            font-size: 70px;
+
+            margin-bottom: 20px;
+        }
+
+        .photo-section p {
+            max-width: 700px;
+
+            margin: auto;
+
+            color: #a4acb5;
+
+            line-height: 1.9;
+
+            font-size: 17px;
+        }
+
+        .photo-note {
+            margin-top: 25px;
+
+            display: inline-block;
+
+            padding: 12px 20px;
+
+            border: 1px dashed rgba(232, 199, 120, 0.4);
+
+            border-radius: 10px;
+
+            color: #d7bc78;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           FUN FACTS
+        ===================================================== */
+
+        .facts {
+            max-width: 1000px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(200px, 1fr));
+
+            gap: 15px;
+        }
+
+        .fact {
+            text-align: center;
+
+            padding: 25px;
+
+            background: rgba(255, 255, 255, 0.035);
+
+            border-radius: 12px;
+
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .fact-number {
+            font-size: 35px;
+
+            color: #e8c778;
+
+            margin-bottom: 10px;
+        }
+
+        .fact p {
+            color: #969fa9;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            padding: 60px 20px;
+
+            text-align: center;
+
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+            color: #717a86;
+        }
+
+        footer .footer-logo {
+            color: #e8c778;
+
+            font-size: 25px;
+
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            font-family: Arial, sans-serif;
+
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 750px) {
+
+            nav {
+                padding: 17px 5%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            section {
+                padding: 80px 5%;
+            }
+
+            .about,
+            .art-section,
+            .movie-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gear {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 60px;
+            }
+
+            .section-title h2 {
+                font-size: 36px;
+            }
+
+            .painting {
+                transform: none;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         FLOATING MAGIC PARTICLES
+    ====================================================== -->
+
+    <div class="particle p1"></div>
+    <div class="particle p2"></div>
+    <div class="particle p3"></div>
+    <div class="particle p4"></div>
+    <div class="particle p5"></div>
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
+
+    <nav>
+
+        <div class="logo">
+            EUGENE<span>.</span>
+        </div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#interests">Interests</a></li>
+            <li><a href="#art">Art</a></li>
+            <li><a href="#music">Music</a></li>
+            <li><a href="#movies">Movies</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="hero" id="home">
+
+        <div class="gear gear1">⚙</div>
+        <div class="gear gear2">⚙</div>
+
+
+        <div class="hero-content">
+
+            <div class="small-title">
+                ✦ A little world made by Eugene
+            </div>
+
+            <h1>
+                Hello, I'm<br>
+                <span>Eugene.</span>
+            </h1>
+
+            <p>
+                A second-year BSIT student, an occasional painter,
+                a quiet photographer, a music listener, and someone
+                who finds a little bit of magic in ordinary things.
+            </p>
+
+
+            <div class="buttons">
+
+                <a href="#about" class="btn gold-btn">
+                    Enter My World ✦
+                </a>
+
+                <a href="#interests" class="btn outline-btn">
+                    Discover More
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ABOUT ME
+    ====================================================== -->
+
+    <section id="about">
+
+        <div class="section-title">
+
+            <small>WHO I AM</small>
+
+            <h2>About Eugene</h2>
+
+            <p>Just a student trying to figure things out.</p>
+
+        </div>
+
+
+        <div class="about">
+
+            <div class="about-card">
+
+                <p>
+                    My name is
+                    <strong>Eugene Piolo D. Suminao</strong>,
+                    but you can simply call me Eugene.
+                </p>
+
+                <br>
+
+                <p>
+                    I'm currently a
+                    <strong>second-year BSIT student</strong>
+                    at
+                    <strong>Northern Bukidnon State College</strong>.
+                </p>
+
+                <br>
+
+                <p>
+                    I'm interested in technology, but I don't want
+                    my world to revolve around computers alone.
+                    I like art, music, movies, photography,
+                    and the little things that make life feel
+                    interesting.
+                </p>
+
+            </div>
+
+
+            <div class="about-card">
+
+                <div class="quote">
+
+                    "I like making things, looking at things,
+                    listening to things, and sometimes just
+                    keeping them to myself."
+
+                    <br><br>
+
+                    — Eugene
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         INTERESTS
+    ====================================================== -->
+
+    <section id="interests">
+
+        <div class="section-title">
+
+            <small>THINGS I LIKE</small>
+
+            <h2>Inside My World</h2>
+
+            <p>A few things that make me, well... me.</p>
+
+        </div>
+
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🎨
+                </div>
+
+                <h3>Painting</h3>
+
+                <p>
+                    I love painting and experimenting with
+                    colors. Sometimes I paint with a plan,
+                    sometimes I just see where the brush takes me.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🎧
+                </div>
+
+                <h3>Music</h3>
+
+                <p>
+                    My playlist can go from metal to indie
+                    without warning. If it sounds good,
+                    I'll probably listen to it.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    📷
+                </div>
+
+                <h3>Photography</h3>
+
+                <p>
+                    I love taking pictures of things I find
+                    interesting. I rarely upload them though.
+                    Some moments are just for me.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🎬
+                </div>
+
+                <h3>Movies</h3>
+
+                <p>
+                    Especially animated films that make ordinary
+                    worlds feel magical, strange, beautiful,
+                    and alive.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ART / MONET
+    ====================================================== -->
+
+    <section id="art">
+
+        <div class="section-title">
+
+            <small>MY FAVORITE PAINTING</small>
+
+            <h2>A Painting I Love</h2>
+
+            <p>Claude Monet — Water Lilies</p>
+
+        </div>
+
+
+        <div class="art-section">
+
+
+            <div class="painting">
+
+                <!--
+                    Claude Monet's Water Lilies, 1916.
+                    Public-domain artwork.
+                -->
+
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Monet_Water_Lilies_1916.jpg/601px-Monet_Water_Lilies_1916.jpg"
+                    alt="Water Lilies by Claude Monet"
+                >
+
+                <div class="painting-caption">
+                    Claude Monet — Water Lilies, 1916
+                </div>
+
+            </div>
+
+
+            <div class="art-info">
+
+                <h2>
+                    I like art that feels
+                    <span>alive.</span>
+                </h2>
+
+                <p>
+                    One of my favorite paintings is
+                    <strong>Water Lilies</strong> by Claude Monet.
+                    I love how the painting doesn't feel completely
+                    still. The colors, reflections, water, and
+                    flowers almost feel like they're moving.
+                </p>
+
+                <p>
+                    That's one of the things I love about painting:
+                    it doesn't always have to explain something.
+                    Sometimes it can simply make you feel something.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MUSIC
+    ====================================================== -->
+
+    <section id="music">
+
+        <div class="section-title">
+
+            <small>WHAT'S PLAYING?</small>
+
+            <h2>My Music Corner</h2>
+
+            <p>The soundtrack of ordinary days.</p>
+
+        </div>
+
+
+        <div class="music-box">
+
+            <div class="music-icon">
+                🎵
+            </div>
+
+            <h3>
+                My playlist has no rules.
+            </h3>
+
+            <p>
+                I enjoy listening to different kinds of music.
+                Sometimes it's loud metal, sometimes it's quiet
+                indie music. It really depends on the mood.
+            </p>
+
+
+            <div class="music-tags">
+
+                <div class="music-tag">
+                    METAL
+                </div>
+
+                <div class="music-tag">
+                    INDIE
+                </div>
+
+                <div class="music-tag">
+                    MRS. MAGIC
+                </div>
+
+                <div class="music-tag">
+                    BEABADOOBEE
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MOVIES
+    ====================================================== -->
+
+    <section id="movies">
+
+        <div class="section-title">
+
+            <small>MY FAVORITE WORLDS</small>
+
+            <h2>Movies I Love</h2>
+
+            <p>Stories that make the world feel a little more magical.</p>
+
+        </div>
+
+
+        <div class="movie-grid">
+
+
+            <div class="movie-card">
+
+                <div class="symbol">
+                    🏰
+                </div>
+
+                <h3>
+                    Howl's Moving Castle
+                </h3>
+
+                <p>
+                    One of my favorites. I love the strange,
+                    beautiful world, the moving castle,
+                    the skies, the music, and the feeling that
+                    adventure could be waiting somewhere nearby.
+                </p>
+
+            </div>
+
+
+            <div class="movie-card">
+
+                <div class="symbol">
+                    ✈️
+                </div>
+
+                <h3>
+                    The Wind Rises
+                </h3>
+
+                <p>
+                    A beautiful story about dreams, creativity,
+                    ambition, and the complicated relationship
+                    between creating something beautiful and
+                    living in an imperfect world.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PHOTOGRAPHY
+    ====================================================== -->
+
+    <section>
+
+        <div class="section-title">
+
+            <small>BEHIND THE CAMERA</small>
+
+            <h2>The Pictures I Never Post</h2>
+
+        </div>
+
+
+        <div class="photo-section">
+
+            <div class="camera">
+                📷
+            </div>
+
+            <p>
+                I love taking pictures.
+                Streets, skies, random places, little details,
+                moments that look ordinary but somehow feel
+                worth remembering.
+            </p>
+
+            <br>
+
+            <p>
+                The funny thing is...
+                I almost never upload them.
+            </p>
+
+            <div class="photo-note">
+                Some pictures don't need an audience.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FUN FACTS
+    ====================================================== -->
+
+    <section>
+
+        <div class="section-title">
+
+            <small>A FEW MORE THINGS</small>
+
+            <h2>Little Details</h2>
+
+        </div>
+
+
+        <div class="facts">
+
+
+            <div class="fact">
+
+                <div class="fact-number">
+                    🎨
+                </div>
+
+                <p>
+                    I enjoy painting.
+                </p>
+
+            </div>
+
+
+            <div class="fact">
+
+                <div class="fact-number">
+                    🎧
+                </div>
+
+                <p>
+                    My music taste has no single genre.
+                </p>
+
+            </div>
+
+
+            <div class="fact">
+
+                <div class="fact-number">
+                    📷
+                </div>
+
+                <p>
+                    I take pictures I rarely post.
+                </p>
+
+            </div>
+
+
+            <div class="fact">
+
+                <div class="fact-number">
+                    🌌
+                </div>
+
+                <p>
+                    I like things that feel a little magical.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FINAL MESSAGE
+    ====================================================== -->
+
+    <section>
+
+        <div class="section-title">
+
+            <small>BEFORE YOU LEAVE</small>
+
+            <h2>Thanks for Visiting.</h2>
+
+            <p>
+                This little corner of the internet belongs to Eugene.
+            </p>
+
+            <br>
+
+            <p>
+                Maybe I'll add more here someday.
+                Maybe I won't.
+                That's part of the fun.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <div class="footer-logo">
+            EUGENE.
+        </div>
+
+        <p>
+            BSIT Student • Artist • Music Listener • Photographer
+        </p>
+
+        <br>
+
+        <p>
+            © 2026 Eugene Piolo D. Suminao
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
