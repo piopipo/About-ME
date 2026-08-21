@@ -641,7 +641,75 @@
 
             margin-bottom: 20px;
         }
+/* =====================================================
+   FAVORITE ARTISTS
+===================================================== */
 
+.artists-section {
+    max-width: 1100px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+}
+
+.artist-card {
+    padding: 35px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(76, 113, 155, 0.22),
+            rgba(16, 26, 43, 0.8)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    transition: 0.4s;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.artist-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(232, 199, 120, 0.35);
+}
+
+.artist-icon {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.artist-card h3 {
+    font-size: 28px;
+    font-weight: normal;
+    margin-bottom: 12px;
+}
+
+.artist-card p {
+    color: #aab1b9;
+    line-height: 1.8;
+}
+
+.artist-type {
+    display: inline-block;
+
+    margin-top: 20px;
+    padding: 7px 14px;
+
+    border: 1px solid rgba(232, 199, 120, 0.3);
+    border-radius: 20px;
+
+    color: #d7bc78;
+
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
 
         /* =====================================================
            MUSIC
@@ -912,46 +980,259 @@
 
 
         /* =====================================================
-           MOBILE
-        ===================================================== */
+   MOBILE
+===================================================== */
 
-        @media (max-width: 750px) {
+@media (max-width: 750px) {
 
-            nav {
-                padding: 17px 5%;
-            }
+    /* Navigation */
+    nav {
+        padding: 15px 5%;
+    }
 
-            nav ul {
-                display: none;
-            }
+    nav ul {
+        display: none;
+    }
 
-            section {
-                padding: 80px 5%;
-            }
+    .logo {
+        font-size: 20px;
+    }
 
-            .about,
-            .art-section,
-            .movie-grid {
-                grid-template-columns: 1fr;
-            }
 
-            .gear {
-                display: none;
-            }
+    /* General sections */
+    section {
+        padding: 70px 5%;
+    }
 
-            .hero h1 {
-                font-size: 60px;
-            }
 
-            .section-title h2 {
-                font-size: 36px;
-            }
+    /* Hero */
+    .hero {
+        min-height: 100svh;
+        padding: 100px 20px 60px;
+    }
 
-            .painting {
-                transform: none;
-            }
+    .hero h1 {
+        font-size: clamp(48px, 15vw, 70px);
+        line-height: 1;
+    }
 
-        }
+    .hero p {
+        font-size: 15px;
+        line-height: 1.7;
+        padding: 0 5px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+
+    /* Section titles */
+    .section-title {
+        margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+
+    .section-title p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+
+    /* About */
+    .about {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .about-card {
+        padding: 25px 20px;
+    }
+
+    .about-card p {
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+
+    /* Interest cards */
+    .cards {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .card {
+        padding: 25px 20px;
+    }
+
+    .card h3 {
+        font-size: 21px;
+    }
+
+    .card p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+
+    /* Monet / Art */
+    .art-section {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .painting {
+        width: 100%;
+        transform: none;
+        padding: 10px;
+    }
+
+    .painting img {
+        width: 100%;
+        height: auto;
+    }
+
+    .painting-caption {
+        bottom: 15px;
+        left: 15px;
+        font-size: 10px;
+        padding: 8px 10px;
+    }
+
+    .art-info h2 {
+        font-size: 32px;
+    }
+
+    .art-info p {
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .monet-palette {
+        flex-wrap: wrap;
+    }
+
+
+    /* Favorite artists */
+    .artists-section {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .artist-card {
+        padding: 25px 20px;
+    }
+
+    .artist-card h3 {
+        font-size: 24px;
+    }
+
+    .artist-card p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+
+    /* Music */
+    .music-box {
+        padding: 30px 20px;
+    }
+
+    .music-box h3 {
+        font-size: 24px;
+    }
+
+    .music-box p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .music-tags {
+        gap: 8px;
+    }
+
+    .music-tag {
+        font-size: 11px;
+        padding: 7px 12px;
+    }
+
+
+    /* Movies */
+    .movie-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .movie-card {
+        min-height: 230px;
+        padding: 25px 20px;
+    }
+
+    .movie-card h3 {
+        font-size: 24px;
+    }
+
+    .movie-card p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+
+    /* Photography */
+    .photo-section p {
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+
+    /* Fun facts */
+    .facts {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .fact {
+        padding: 20px 12px;
+    }
+
+    .fact-number {
+        font-size: 28px;
+    }
+
+    .fact p {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+
+    /* Footer */
+    footer {
+        padding: 45px 15px;
+    }
+
+    footer p {
+        font-size: 11px;
+        line-height: 1.6;
+    }
+
+
+    /* Hide decorative gears */
+    .gear {
+        display: none;
+    }
+
+}
 
     </style>
 </head>
@@ -982,13 +1263,14 @@
         </div>
 
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#interests">Interests</a></li>
-            <li><a href="#art">Art</a></li>
-            <li><a href="#music">Music</a></li>
-            <li><a href="#movies">Movies</a></li>
-        </ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#interests">Interests</a></li>
+    <li><a href="#art">Art</a></li>
+    <li><a href="#artists">Artists</a></li>
+    <li><a href="#music">Music</a></li>
+    <li><a href="#movies">Movies</a></li>
+       </ul>
 
     </nav>
 
@@ -1015,8 +1297,8 @@
 
             <p>
                 A second-year BSIT student, an occasional painter,
-                a quiet photographer, a music listener, and someone
-                who finds a little bit of magic in ordinary things.
+                a quiet photographer, a music listener. 
+                Bones and All.
             </p>
 
             <div class="buttons">
@@ -1078,8 +1360,7 @@
                     I'm interested in technology, but I don't want
                     my world to revolve around computers alone.
                     I like art, music, movies, photography,
-                    and the little things that make life feel
-                    interesting.
+                    and i would gladly sell my own bones for a sapphire stones.
                 </p>
 
             </div>
@@ -1275,7 +1556,79 @@
         </div>
 
     </section>
+<!-- =====================================================
+     FAVORITE ARTISTS
+====================================================== -->
 
+<section id="artists">
+
+    <div class="section-title">
+
+        <small>ARTISTS I ADMIRE</small>
+
+        <h2>Artists Who Inspire Me</h2>
+
+        <p>
+            Different styles, different worlds, but both
+            inspire the way I see art and storytelling.
+        </p>
+
+    </div>
+
+
+    <div class="artists-section">
+
+        <!-- HAYAO MIYAZAKI -->
+
+        <div class="artist-card">
+
+            <div class="artist-icon">
+                🌿
+            </div>
+
+            <h3>Hayao Miyazaki</h3>
+
+            <p>
+                I admire Hayao Miyazaki for the worlds he creates.
+                His stories feel magical while still being connected
+                to ordinary life, nature, people, and emotions.
+                I especially love the way his films make even
+                simple moments feel meaningful.
+            </p>
+
+            <div class="artist-type">
+                FILMMAKER • ANIMATOR • STORYTELLER
+            </div>
+
+        </div>
+
+
+        <!-- JUNJI ITO -->
+
+        <div class="artist-card">
+
+            <div class="artist-icon">
+                🌀
+            </div>
+
+            <h3>Junji Ito</h3>
+
+            <p>
+                I also admire Junji Ito for his unique approach
+                to art and storytelling. His illustrations have
+                a distinctive style, and I like how he can turn
+                strange ideas into memorable visual stories.
+            </p>
+
+            <div class="artist-type">
+                MANGA ARTIST • WRITER • ILLUSTRATOR
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
     <!-- =====================================================
          MUSIC
@@ -1322,7 +1675,7 @@
                 </div>
 
                 <div class="music-tag">
-                    MRS. MAGIC
+                   DEFTONES
                 </div>
 
                 <div class="music-tag">
@@ -1508,7 +1861,7 @@
                 </div>
 
                 <p>
-                    I like things that feel a little magical.
+                    I like things unnoticed.
                 </p>
 
             </div>
@@ -1564,7 +1917,7 @@
         <br>
 
         <p>
-            © 2026 Eugene Piolo D. Suminao
+            © 2026 Sorenhrson
         </p>
 
     </footer>
