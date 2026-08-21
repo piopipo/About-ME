@@ -521,20 +521,54 @@
         .painting {
             position: relative;
 
-            background: #ddd;
+            background: #ddd8c9;
 
-            padding: 12px;
+            padding: 14px;
 
             transform: rotate(-2deg);
 
             box-shadow:
-                0 25px 50px rgba(0, 0, 0, 0.4);
+                0 25px 50px rgba(0, 0, 0, 0.4),
+                inset 0 0 0 2px rgba(90, 67, 38, 0.25);
+        }
+
+        .painting::before {
+            content: "✦";
+
+            position: absolute;
+
+            top: -22px;
+            right: 18px;
+
+            color: #e8c778;
+
+            font-size: 24px;
+
+            z-index: 2;
+
+            opacity: 0.8;
         }
 
         .painting img {
             width: 100%;
 
             display: block;
+
+            border: 5px solid #3c3429;
+        }
+
+        .painting-frame-label {
+            text-align: center;
+
+            color: #4b4032;
+
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: 12px;
+
+            letter-spacing: 1px;
+
+            padding: 8px 4px 2px;
         }
 
         .painting-caption {
@@ -554,6 +588,38 @@
             font-size: 12px;
 
             backdrop-filter: blur(10px);
+        }
+
+        .monet-palette {
+            display: flex;
+
+            gap: 8px;
+
+            margin-top: 22px;
+
+            align-items: center;
+        }
+
+        .monet-palette span {
+            width: 25px;
+
+            height: 25px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(255, 255, 255, 0.25);
+
+            display: inline-block;
+        }
+
+        .monet-palette small {
+            margin-left: 5px;
+
+            color: #858e99;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 11px;
         }
 
         .art-info h2 {
@@ -936,7 +1002,6 @@
         <div class="gear gear1">⚙</div>
         <div class="gear gear2">⚙</div>
 
-
         <div class="hero-content">
 
             <div class="small-title">
@@ -953,7 +1018,6 @@
                 a quiet photographer, a music listener, and someone
                 who finds a little bit of magic in ordinary things.
             </p>
-
 
             <div class="buttons">
 
@@ -1061,7 +1125,6 @@
 
         <div class="cards">
 
-
             <div class="card">
 
                 <div class="card-icon">
@@ -1129,7 +1192,6 @@
 
             </div>
 
-
         </div>
 
     </section>
@@ -1154,21 +1216,19 @@
 
         <div class="art-section">
 
-
             <div class="painting">
-
-                <!--
-                    Claude Monet's Water Lilies, 1916.
-                    Public-domain artwork.
-                -->
 
                 <img
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Monet_Water_Lilies_1916.jpg/601px-Monet_Water_Lilies_1916.jpg"
                     alt="Water Lilies by Claude Monet"
                 >
 
+                <div class="painting-frame-label">
+                    CLAUDE MONET • WATER LILIES • 1916
+                </div>
+
                 <div class="painting-caption">
-                    Claude Monet — Water Lilies, 1916
+                    A little piece of Monet's world
                 </div>
 
             </div>
@@ -1194,6 +1254,21 @@
                     it doesn't always have to explain something.
                     Sometimes it can simply make you feel something.
                 </p>
+
+                <div class="monet-palette"
+                    aria-label="Colors inspired by Monet's Water Lilies">
+
+                    <span style="background:#7c9b91;"></span>
+                    <span style="background:#9db5a4;"></span>
+                    <span style="background:#d0b77b;"></span>
+                    <span style="background:#66869a;"></span>
+                    <span style="background:#6f6b8c;"></span>
+
+                    <small>
+                        colors that remind me of Monet
+                    </small>
+
+                </div>
 
             </div>
 
@@ -1273,13 +1348,14 @@
 
             <h2>Movies I Love</h2>
 
-            <p>Stories that make the world feel a little more magical.</p>
+            <p>
+                Stories that make the world feel a little more magical.
+            </p>
 
         </div>
 
 
         <div class="movie-grid">
-
 
             <div class="movie-card">
 
@@ -1319,7 +1395,6 @@
                 </p>
 
             </div>
-
 
         </div>
 
@@ -1387,7 +1462,6 @@
 
         <div class="facts">
 
-
             <div class="fact">
 
                 <div class="fact-number">
@@ -1438,7 +1512,6 @@
                 </p>
 
             </div>
-
 
         </div>
 
